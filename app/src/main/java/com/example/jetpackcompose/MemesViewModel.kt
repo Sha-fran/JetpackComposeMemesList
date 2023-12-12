@@ -23,9 +23,9 @@ class MemesViewModel:ViewModel() {
             }
         }
     }
+    sealed class UiState {
+        data object EmptyList:UiState()
+        class FilledList(val memes:List<Memes>):UiState()
+    }
 }
 
-sealed class UiState {
-    data object EmptyList:UiState()
-    class FilledList(val memes:List<Memes>):UiState()
-}

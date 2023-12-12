@@ -54,9 +54,7 @@ class MainActivity : ComponentActivity() {
                         onCardClick = {title, url -> navController.navigate("details?title=$title&url=$url")}
                     )
                 }
-                composable(
-                    "details?title={title}&url={url}",
-                    arguments = listOf(
+                composable("details?title={title}&url={url}", arguments = listOf(
                         navArgument("title") {type = NavType.StringType},
                         navArgument("url") {type = NavType.StringType})
                 ) {
@@ -75,7 +73,7 @@ class MainActivity : ComponentActivity() {
 
         viewModel.getMemes()
 
-        if (memesState is UiState.FilledList) {
+        if (memesState is MemesViewModel.UiState.FilledList) {
             memesList = memesState.memes
         }
         LazyColumn(
